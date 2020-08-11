@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: ${PROFILE:develop}
+  main:
+    banner-mode: off
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
