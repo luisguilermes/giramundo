@@ -6,5 +6,5 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=accounting_service
+      - MYSQL_DATABASE=giramundo_db
+      - MYSQL_ROOT_PASSWORD=123456

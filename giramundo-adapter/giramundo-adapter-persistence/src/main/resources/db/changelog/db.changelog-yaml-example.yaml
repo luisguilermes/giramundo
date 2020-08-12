@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user-role
+      author: luisguilermes
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: user
+      changes:
+        - createTable:
+            columns:
+                - column:
+                    autoIncrement: true
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: user_pkey
+                    name: id
+                    type: BIGINT
+                - column:
+                    constraints:
+                      nullable: false
+                      unique: true
+                    name: username
+                    type: VARCHAR(255)
+                - column:
+                    constraints:
+                      nullable: false
+                      unique: true
+                    name: email
+                    type: VARCHAR(255)
+                - column:
+                    name: password
+                    type: VARCHAR(255)
+            tableName: user
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: role_pkey
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(255)
+            tableName: role
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    foreignKeyName: user_pkey
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    foreignKeyName: role_pkey
+                  name: role_id
+                  type: INT
+            tableName: user_roles
