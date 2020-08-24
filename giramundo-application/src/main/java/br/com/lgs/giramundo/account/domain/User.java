@@ -1,16 +1,19 @@
 package br.com.lgs.giramundo.account.domain;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.Set;
 
+@Setter
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    private final Long id;
-    private final String username;
-    private final String email;
-    private final String password;
-    private final Set<Role> roles;
+    private Long id;
+    private String username;
+    private String email;
+    private String password;
+    private Set<Role> roles;
 }
+

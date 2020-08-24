@@ -1,12 +1,14 @@
 package br.com.lgs.giramundo.account.domain;
 
 import br.com.lgs.giramundo.account.domain.enums.UserRoleEnum;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
+@Setter
 @Getter
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
-    private final Integer id;
-    private final UserRoleEnum name;
+    private Integer id;
+    private UserRoleEnum name;
 }
