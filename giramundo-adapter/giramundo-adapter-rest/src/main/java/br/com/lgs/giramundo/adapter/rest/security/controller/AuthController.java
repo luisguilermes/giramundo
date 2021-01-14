@@ -1,11 +1,10 @@
 package br.com.lgs.giramundo.adapter.rest.security.controller;
 
-import br.com.lgs.giramundo.adapter.rest.security.jwt.JwtUtils;
-import br.com.lgs.giramundo.adapter.rest.security.payload.request.LoginRequest;
-import br.com.lgs.giramundo.adapter.rest.security.payload.response.JwtResponse;
-import br.com.lgs.giramundo.adapter.rest.security.service.UserDetailsImpl;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +12,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
+import br.com.lgs.giramundo.adapter.rest.security.jwt.JwtUtils;
+import br.com.lgs.giramundo.adapter.rest.security.payload.request.LoginRequest;
+import br.com.lgs.giramundo.adapter.rest.security.payload.response.JwtResponse;
+import br.com.lgs.giramundo.adapter.rest.security.service.UserDetailsImpl;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j

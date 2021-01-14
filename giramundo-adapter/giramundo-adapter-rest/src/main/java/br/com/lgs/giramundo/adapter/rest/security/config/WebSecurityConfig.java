@@ -1,11 +1,5 @@
 package br.com.lgs.giramundo.adapter.rest.security.config;
 
-import br.com.lgs.giramundo.adapter.rest.security.jwt.AuthEntryPointJwt;
-import br.com.lgs.giramundo.adapter.rest.security.jwt.AuthTokenFilter;
-import br.com.lgs.giramundo.adapter.rest.security.jwt.JwtUtils;
-import br.com.lgs.giramundo.adapter.rest.security.service.UserDetailsServiceImpl;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +12,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import br.com.lgs.giramundo.adapter.rest.security.jwt.AuthEntryPointJwt;
+import br.com.lgs.giramundo.adapter.rest.security.jwt.AuthTokenFilter;
+import br.com.lgs.giramundo.adapter.rest.security.jwt.JwtUtils;
+import br.com.lgs.giramundo.adapter.rest.security.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 
 
 @Configuration
@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/api/**").authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
